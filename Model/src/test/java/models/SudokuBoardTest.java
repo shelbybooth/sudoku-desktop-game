@@ -258,4 +258,16 @@ public class SudokuBoardTest {
         assertFalse(sudokuBoard.equals(clonedBoard));
         assertNotEquals(sudokuBoard.hashCode(), clonedBoard.hashCode());
     }
+
+    @Test
+    void testInitialBoardIsEmpty() {
+        SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+        for (int i = 0; i < SudokuBoard.BOARD_SIZE; i++) {
+            for (int j = 0; j < SudokuBoard.BOARD_SIZE; j++) {
+                assertEquals(0, board.getField(i, j).getValue(),
+                        "New board should be initialized with zeros at (" + i + "," + j + ")");
+            }
+        }
+    }
+
 }
